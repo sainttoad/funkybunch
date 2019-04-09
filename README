@@ -1,0 +1,5 @@
+docker build -f Dockerfile -t funkybunch .  # --no-cache
+
+docker run --name funkybunch --rm -v`pwd`/tweets:/tweets -v`pwd`/app:/funkybunch -ti funkybunch bash
+
+docker run --name funkybunch --rm -v`pwd`/tweets:/tweets -ti funkybunch
