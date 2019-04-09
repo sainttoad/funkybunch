@@ -2,4 +2,7 @@ docker build -f Dockerfile -t funkybunch .  # --no-cache
 
 docker run --name funkybunch --rm -v`pwd`/tweets:/tweets -v`pwd`/app:/funkybunch -ti funkybunch bash
 
-docker run --name funkybunch --rm -v`pwd`/tweets:/tweets -ti funkybunch
+docker run --name funkybunch --rm -v`pwd`/tweets:/tweets -e TWITTER_USERNAME=jack -ti funkybunch
+
+cron:
+5 * * * * /usr/bin/docker run --rm --name funkybunch -v/var/tmp/tweets:/tweets -e TWITTER_USERNAME=jack funkybunch > /tmp/funkybunch.log 2>&1
